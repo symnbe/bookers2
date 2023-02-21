@@ -48,10 +48,9 @@
         <tbody>
            <% @users.each do |user| %>
             <tr>
-              <%= image_tag user.get_image %>
-              <td><%= image_tag %></td>
+              <td><%= image_tag user.get_profile_image(100, 100) %></td>
               <td><%= user.name %></td>
-              <td><%= link_to "show", uses_path(@user.id) %></td>
+              <td><%= link_to "show", users_path(user.id) %></td>
             </tr>
           <% end %>
         </tbody>
