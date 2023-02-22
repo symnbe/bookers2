@@ -7,11 +7,25 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(current_user.id)
     @book = Book.new
     @books = Book.all
   end
 
   def edit
+    @user = User.find(current_user.id)
+  end
+  
+  def update
+    @book = Book.new
+    @books = Book.all
+    @user = User.find(params[:id])
+    if @user.update(users_params)
+      flash[:notice] = "You have updated user successfully."
+      redirect_to user_path(@user.id)
+    else
+      render :show
+    end
   end
 
   def get_image
